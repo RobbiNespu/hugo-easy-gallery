@@ -1,13 +1,11 @@
 # hugo-easy-gallery
 
-**2019-01-20: I'm looking for people to help maintain this project - e.g. review and approve pull requests, which I no longer have time to do. Please contact me if you are interested. Thanks!**
-
 Automagical css image gallery in [Hugo](https://gohugo.io/) using shortcodes, with optional lightbox/carousel gadget using [PhotoSwipe](http://photoswipe.com/) and jQuery.
 
 **New:** Create a gallery of all images in a directory with just one line of shortcode, see [demo](https://www.liwen.id.au/heg/#gallery-usage).
 
 **Need help?**
-- Post your question at https://github.com/liwenyip/hugo-easy-gallery/issues.
+- Post your question at https://github.com/lupsa/hugo-easy-gallery/issues.
 - Include a link to a test page that demonstrates the issue you are having
 - Include your source code for the test page
 - Please be patient (I have a busy day job as that has nothing to do with web development or computer science, so every time I look at issues/PRs it takes me a while to get back up to speed); I will respond eventually. Please DO NOT email me asking for help, you are very unlikely to get a response from me this way.
@@ -44,41 +42,25 @@ Automagical css image gallery in [Hugo](https://gohugo.io/) using shortcodes, wi
 - Loads PhotoSwipe js and css libraries from `cdnjs.cloudflare.com`
 
 ## Installation
-Put files in following places:
 
-- /layouts/shortcodes/figure.html
-- /layouts/shortcodes/gallery.html
-- /layouts/shortcodes/load-photoswipe.html
-- /static/js/load-photoswipe.js
-- /static/css/hugo-easy-gallery.css
+Using hugo modules:
 
-**NB `load-photoswipe.html` loads jQuery from `cdnjs.cloudflare.com`.**
+```bash
+hugo mod get github.com/lupsa/hugo-easy-gallery
+```
 
-- If your template already loads jQuery in the header, you can delete the jQuery link in `load-photoswipe.html`.
-- If your template already loads jQuery in the footer,  you should `load-photoswipe.js` from the footer instead of in `load-photoswipe.html`.
+or as git submodule
 
-If you want, you could (depending on a front matter param) conditionally load `load-photoswipe.html` or its contents from the footer of your template.  But I've consciously chosen to load PhotoSwipe using a shortcode so that you don't have to modify your template if you don't want to.
+```bash
+git submodule add https://github.com/lupsa/hugo-easy-gallery.git themes/hugo-easy-gallery
+```
 
-## Theme integration
+> If you use it with `git submodule`, add in your config file `hugo-easy-gallery` as your second theme.
 
-Put files in the relevant folders within your theme.
-
-Delete `/layouts/shortcodes/load-photoswipe.html`.
-
-Rename `/layouts/shortcodes/load-photoswipe-theme.html` to `/layouts/shortcodes/load-photoswipe.html`.
-
-Add the following lines to the footer of your template, just before `</body>`:
-
-(Omit the jQuery line if jQuery is already loaded elsewhere in your template; just make sure that jQuery is loaded **before** this code.)
-
-```html
-<!-- Load PhotoSwipe js if the load-photoswipe shortcode has been used -->
-{{ if ($.Scratch.Get "photoswipeloaded") }}
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-<script src="/js/load-photoswipe.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.js" integrity="sha256-UplRCs9v4KXVJvVY+p+RSo5Q4ilAUXh7kpjyIP5odyc=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe-ui-default.min.js" integrity="sha256-PWHOlUzc96pMc8ThwRIXPn8yH4NOLu42RQ0b9SpnpFk=" crossorigin="anonymous"></script>
-{{ end }}
+```yaml
+theme:
+  - your-primary-theme
+  - hugo-easy-gallery
 ```
 
 ## `{{< figure >}}` shortcode usage
@@ -167,10 +149,6 @@ Here are some pointers if you want to adapt the CSS:
  - Change `min-width: 9999px` in the last `@media` style to something sensible if you want to use a 4-tile layout
  - If you want more than 4 tiles per row, set `width` = 100% / number of tiles per row
  - `padding-bottom` = `width` gives square tiles. Change padding-bottom if you want some other aspect ratio, e.g. `width: 33.3%; padding-bottom: 25%` gives a 4:3 aspect ratio.
-
-## Issues
-
-I've tested this with the [beautifulhugo](https://github.com/halogenica/beautifulhugo) theme. If things don't work properly with other themes, raise an issue on GitHub, or even better fix the issue and submit a pull request :-)
 
 ## Credits
 
