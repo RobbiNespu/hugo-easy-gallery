@@ -20,7 +20,7 @@ Grid Layout Styles
     padding-bottom: 50%; 
 }
 /*  custom: remove hover color */
-.gallery .box a:hover {
+.box a:hover {
     background-color: transparent;
 }
 /* custom: remove border-bottom */
