@@ -6,6 +6,7 @@
 {{ end }}
 
 <ul class="posts">
+				{{ .Type }} LIST GALLERY
 	{{- range .Data.Pages -}}
 		{{- if (not (in (.Site.Params.excludedTypes | default (slice "page")) .Type)) -}}
 		<li class="post">
