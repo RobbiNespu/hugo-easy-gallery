@@ -19,6 +19,14 @@ Grid Layout Styles
     width: 50%;
     padding-bottom: 50%; 
 }
+/*  custom: remove hover color */
+.box a:hover {
+    background-color: transparent;
+}
+/* custom: remove border-bottom */
+.box a{
+    border-bottom:transparent
+}
 @media only screen and (min-width : 480px) {
     /* Small desktop / ipad view: 3 tiles */
     .gallery .box {
