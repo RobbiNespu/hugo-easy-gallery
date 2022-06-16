@@ -17,7 +17,7 @@ Grid Layout Styles
     position: relative;
     /* Default: 1 tile wide */
     width: 50%;
-    padding-bottom: 50%; 
+    padding-bottom: 50%;
 }
 /*  custom: remove hover color */
 .box a:hover {
@@ -39,7 +39,7 @@ Grid Layout Styles
 Transition styles
 */
 .gallery.hover-transition figure,
-.gallery.hover-effect-zoom .img, 
+.gallery.hover-effect-zoom .img,
 .gallery:not(.caption-effect-appear) figcaption,
 .fancy-figure:not(.caption-effect-appear) figcaption {
     -webkit-transition: all 0.3s ease-in-out;
@@ -151,4 +151,3 @@ figcaption styles
 figcaption p {
     margin: auto; /* override style in theme */
 }
-
